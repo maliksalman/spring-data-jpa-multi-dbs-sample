@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: change-00001
+      author: salman.malik
+      changes:
+        - createTable:
+            tableName: widgets
+            remarks: A table that contains information about widgets
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: width
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: height
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unit
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+        - createIndex:
+            columns:
+              - column:
+                  name: name
+            indexName: unique_name
+            tableName: widgets
+            unique: true

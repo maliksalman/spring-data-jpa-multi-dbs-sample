@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: multi-dbs
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+dbs:
+  heroes:
+    url: jdbc:mysql://localhost:3306/heroes
+    username: myuser
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 3005
+    liquibase:
+      change-log: classpath:/db/heroes-changelog.yml
+  widgets:
+    url: jdbc:postgresql://localhost:5432/widgets
+    username: myuser
+    password: secret
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 3006
+    liquibase:
+      change-log: classpath:/db/widgets-changelog.yml
+
+springdoc:
+  swagger-ui:
+    path: /
